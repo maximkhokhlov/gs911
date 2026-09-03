@@ -1,48 +1,77 @@
-function SortCopyImportedLogs(basePath)
-% Copy-sort logs from "imported folder
+function SortCopyImportedLogs(importFolderPath, moveFiles, repoBasePath)
+% Copy/move-sort logs from importFolderPath folder
 % The program will create sub folders according to motorcycle model
-% Only new files will be copied
+% Only new files will be copied/moved
 
-% input parameter(optional) the folder which contains "Imported" folder
-% if not provided, the UI will promt for the base folder
+% input parameters are optional. In case one of the folders doesn't exist,
+% the script will call GetFolderUI
 
+% It is possible to enter relative paths (ex. '..\..\D8141\GS911 Logs')
 
+%% process input parameters
+if exist('SortCopyImportedLogs.mat','file')
+    load('SortCopyImportedLogs.mat');
+end
 
-impFld='Imported';
-
-
-if nargin>0
-    pathstr=basePath;
-else
-    if exist('SortCopyImportedLogs.mat','file')
-        load('SortCopyImportedLogs.mat');
-        if ~exist(pathstr,'file') %#ok<NODEF>
-            pathstr=uigetdir(pathstr,'Select Base Folder. The folder that contains "Imported" folder');
-            if ~pathstr % exit if cancel clicked
-                return
-            end
-            
-        end
-        
+if nargin < 3
+    if exist('repoBasePathSaved','var')
+        repoBasePath = repoBasePathSaved; %#ok<NODEF>
     else
-        pathstr=cd;
+        repoBasePath = cd;
     end
-    
-    save('SortCopyImportedLogs.mat','pathstr');
-    
-    % pathstr='D:\Temp\gs911 - logs sorting try';
+end
+
+%check whether the repo folder exist
+if ~exist(repoBasePath,'file')
+    repoBasePath=uigetdir(cd,'Select Repo Base Folder');
+    if ~repoBasePath % exit if cancel clicked
+        return
+    end
+end
+
+if nargin < 2
+    if exist('inputParamsSaved','var')
+        moveFiles = moveFilesSaved; %#ok<NODEF>
+    else
+        moveFiles = false;
+    end
+end
+
+if nargin < 1
+    if exist('importFolderPathSaved','var')
+        importFolderPath = importFolderPathSaved; %#ok<NODEF>
+    else
+        importFolderPath = fullfile(repoBasePath,'Imported');
+    end
+end
+%check whether the import folder exist
+if ~exist(importFolderPath,'file')
+    importFolderPath=uigetdir(cd,'Select folder with logs to import');
+    if ~importFolderPath % exit if cancel clicked
+        return
+    end
+end
+
+%% save the paths and other parameters for future use (without input parameters)
+importFolderPathSaved = importFolderPath; %#ok<NASGU>
+repoBasePathSaved = repoBasePath; %#ok<NASGU>
+moveFilesSaved = moveFiles; %#ok<NASGU>
+save('SortCopyImportedLogs.mat','importFolderPathSaved','repoBasePathSaved','moveFilesSaved');
+
+
+%% the body of the script
+disp(['Logs repo base path: "' repoBasePath '"'])
+disp(['Logs folder to import: "' importFolderPath '"'])
+if moveFiles
+    disp('Move files: True')
+else
+    disp('Move files: False')
 end
 
 
-if ~exist([pathstr '\' impFld],'file')
-    error(['Folder "' impFld '" was not found in "' pathstr '"'])
-end
 
-disp(['Loaded base path: "' pathstr '"'])
-
-
-files=dir([pathstr '\' impFld '\*.csv']);
-files=[files; dir([pathstr '\' impFld '\*.txt'])];
+files=dir(fullfile(importFolderPath,'\*.csv'));
+files=[files; dir(fullfile(importFolderPath,'\*.txt'))];
 
 disp(['Found ' num2str(length(files)) ' files'])
 
@@ -51,7 +80,7 @@ for m=1:length(files)
     
     % Import the file
     try
-        rawData = importdata([pathstr '\' impFld '\' files(m).name], ';', 6);
+        rawData = importdata(fullfile(importFolderPath, files(m).name), ';', 6);
     catch
         error(['Error occured during opening "' files(m).name '" file']);
     end
@@ -87,45 +116,29 @@ for m=1:length(files)
         
         % at this point the date extract is succesfull. continue with
         % renaming
-        
         start_date_str=datestr(start_date,'yyyy-mm-dd HH-MM-SS');
-        
-        
-        
         new_name=[start_date_str ' - ' motorcycle_model ' - GS911 log' files(m).name(end-3:end)];
-        
-        %         % if the new name equals to old name, skip the rename
-        %         if strcmpi(files(m).name,new_name)
-        %             disp(['***Skipping file(filename is ok) :' files(m).name])
-        %             continue
-        %         end
-        
-        newPathStr=[pathstr '\' motorcycle_model];
-        
-        
-        %         % check if this file name already exists
-        %         counter=0;
-        %         while ~isempty(dir([pathstr '\' new_name]))
-        %             counter=counter+1;
-        %             new_name=[start_date_str ' - ' motorcycle_model ' - GS911 log_' num2str(counter) files(m).name(end-3:end)];
-        %         end
-        %
-        
+        newPathStr=fullfile(repoBasePath, motorcycle_model);
         
         if ~exist(newPathStr,'file')
             mkdir(newPathStr);
         end
         
-        
-        if ~exist([newPathStr '\' new_name],'file')
-            disp([num2str(m) '. Copying "' files(m).name '" -> "' motorcycle_model '\' new_name '"'])
-            copyfile([pathstr '\' impFld '\' files(m).name],[newPathStr '\' new_name]);
+        if ~exist(fullfile(newPathStr, new_name),'file')
+            if ~moveFiles
+                disp([num2str(m) '. Copying "' files(m).name '" -> "' fullfile(motorcycle_model, new_name) '"'])
+                copyfile(fullfile(importFolderPath, files(m).name),fullfile(newPathStr, new_name));
+            else
+                disp([num2str(m) '. Moving "' files(m).name '" -> "' fullfile(motorcycle_model, new_name) '"'])
+                movefile(fullfile(importFolderPath, files(m).name),fullfile(newPathStr, new_name));
+                
+            end
         else
-            disp([num2str(m) '. ***Skipping - File exists in Destination "' files(m).name '" -> "' motorcycle_model '\' new_name '"'])
+            disp([num2str(m) '. ***Skipping - File exists in Destination "' files(m).name '" -> "' fullfile(motorcycle_model, new_name) '"'])
         end
         
     else
-        disp([num2str(m) '. ***Skipping file :' files(m).name])
+        disp([num2str(m) '. ***Skipping file:' files(m).name])
     end
 end
 
