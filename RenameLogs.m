@@ -70,7 +70,7 @@ for m=1:length(files)
         
         % check if this file name already exists
         counter=0;
-        while ~isempty(dir(new_name))
+        while ~isempty(dir([pathstr '\' new_name]))
             counter=counter+1;
             new_name=[start_date_str ' - ' motorcycle_model ' - GS911 log_' num2str(counter) files(m).name(end-3:end)];
         end
