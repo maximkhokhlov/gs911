@@ -10,7 +10,7 @@ function SortCopyImportedLogs(importFolderPath, moveFiles, repoBasePath)
 
 %% process input parameters
 if exist('SortCopyImportedLogs.mat','file')
-    load('SortCopyImportedLogs.mat');
+    load('SortCopyImportedLogs.mat'); %#ok<LOAD>
 end
 
 if nargin < 3
@@ -91,12 +91,21 @@ for m=1:length(files)
     start_date=[];
     
     try
-        start_date_str=char(rawData.textdata{2,1});
+        if isstruct(rawData)
+            start_date_str=char(rawData.textdata{2,1});
+        else
+            start_date_str=char(rawData{2});
+        end
+
         start_date_str=start_date_str(2:end);
         start_date=datenum(start_date_str);
         
         
-        motorcycle_model=char(rawData.textdata{4,1});
+        if isstruct(rawData)
+            motorcycle_model=char(rawData.textdata{4,1});
+        else
+            motorcycle_model=char(rawData{4});
+        end
         motorcycle_model=motorcycle_model(2:end);
     catch
         warning(['Error occured during reading timestamp/motorcycle model in "' files(m).name '" file']);
