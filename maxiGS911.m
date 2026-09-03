@@ -22,7 +22,7 @@ function varargout = maxiGS911(varargin)
 
 % Edit the above text to modify the response to help maxiGS911
 
-% Last Modified by GUIDE v2.5 06-Apr-2014 15:14:27
+% Last Modified by GUIDE v2.5 17-May-2018 10:55:56
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -237,6 +237,14 @@ function plot_data(handles)
 axes(handles.ax_main);
 cla
 newplot
+
+gcaHandle = gca;
+addlistener(gcaHandle,'XLim','PostSet', @(src,event) updateXlabels(src, event));
+UserData.compressDateScale = get(handles.cb_compress_date_scale,'value'); 
+UserData.dateSeria = handles.data(:,1);
+set(gca,'UserData',UserData);
+
+
 hold on
 
 c_mat=jet(size(handles.data,2)-1);
@@ -251,7 +259,7 @@ for m=2:size(handles.data,2)
     
     
     
-    if get(handles.cb_compress_date_scale,'value')
+    if gcaHandle.UserData.compressDateScale
         plot(handles.data(:,m)*mult,'color',c_mat(m-1,:))
     else
         plot(handles.data(:,1),handles.data(:,m)*mult,'color',c_mat(m-1,:))
@@ -262,17 +270,19 @@ hold off
 grid on
 
 legend(handles.parameters)
-
-if get(handles.cb_compress_date_scale,'value')
-    tick_no=8;
-    data_sz=size(handles.data,1);
-    set(gca,'XTick',linspace(1,data_sz,tick_no))
-    set(gca,'XTickLabel',datestr(handles.data(uint16(linspace(1,data_sz,tick_no)),1)))
-else
-    datetick
-end
-
 xlabel('Date')
+
+% if get(handles.cb_compress_date_scale,'value')
+%     tick_no=8;
+%     data_sz=size(handles.data,1);
+%     set(gca,'XTick',linspace(1,data_sz,tick_no))
+%     set(gca,'XTickLabel',datestr(handles.data(round(linspace(1,data_sz,tick_no)),1)))
+% else
+%     datetick
+% end
+
+event.AffectedObject = gcaHandle;
+updateXlabels(gcaHandle,event);
 
 set(handles.txt_date,'string',['Log start: ' datestr(handles.data(1,1))]);
 
@@ -340,3 +350,27 @@ end
 
 %save the selection
 guidata(hObject,handles)
+
+
+% --- Executes on mouse press over axes background.
+function ax_main_ButtonDownFcn(hObject, eventdata, handles) %#ok<DEFNU>
+% hObject    handle to ax_main (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+function updateXlabels(src, event)
+if event.AffectedObject.UserData.compressDateScale
+    tick_no=6;
+    data_sz=size(event.AffectedObject.UserData.dateSeria,1);
+    XLim = event.AffectedObject.XLim;
+    XLim(2) = min(XLim(2),data_sz);
+    XLim(1) = max(XLim(1),1);
+    ticksCoordinates = round(linspace(XLim(1),XLim(2),tick_no));
+    set(event.AffectedObject,'XTick',ticksCoordinates)
+    set(event.AffectedObject,'XTickLabel',datestr(event.AffectedObject.UserData.dateSeria(ticksCoordinates)))
+else
+    datetick('x','keeplimits')
+end
+% disp('trigered')
+
+
