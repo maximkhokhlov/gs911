@@ -125,7 +125,7 @@ end
 set(handles.txt_file,'String',[pname fname]);
 
 try
-    rawData = importdata([pname fname], ';', 6);
+    rawData = importdata([pname fname], ';', count_header_lines([pname fname]));
 catch
     error(['Error occured during opening ' fname ' file']);
 end
