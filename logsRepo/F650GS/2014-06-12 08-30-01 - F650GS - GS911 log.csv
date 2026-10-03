@@ -1,0 +1,15 @@
+##;##
+#2014-06-12 08:30:01
+#GS-911 Android V1.1
+#F650GS
+#BMS-C
+Time (ms);Speed( km/h);RPM;Throttle position (TPS)( °);Engine temperature( °C);Intake air temperature( °C);Ambient air pressure( mbar);Battery voltage( V);Idle actuator position( steps);Injection time( ms);Ignition angle( °KW);Lambda sensor voltage( mV);Fuel pump;Fan motor;Lambda closed-loop control;Lambda sensor heating;Tank venting valve (US only)
+368;0;0;0;45.75;24.75;985.0;12.59;140.0;0;0;458.96;0;0;0;0;0
+686;0;0;0;45.75;24.75;985.0;12.59;140.0;0;0;458.96;0;0;0;0;0
+1046;0;0;0;45.75;24.75;985.0;12.59;140.0;0;0;458.96;0;0;0;0;0
+1409;0;0;0;45.75;24.75;985.0;12.59;140.0;0;0;458.96;0;0;0;0;0
+1809;0;0;0;45.75;24.75;985.0;12.59;140.0;0;0;458.96;0;0;0;0;0
+2121;0;0;0;45.75;24.75;985.0;12.59;140.0;0;0;458.96;0;0;0;0;0
+2483;0;0;0;45.75;24.75;985.0;12.59;140.0;0;0;458.96;0;0;0;0;0
+2942;0;0;0;45.75;24.75;985.0;12.59;140.0;0;0;458.96;0;0;0;0;0
+3324;0;0;0;45.75;24.75;985.0;12.59;140.0;0;0;458.96;0;0;0;0;0

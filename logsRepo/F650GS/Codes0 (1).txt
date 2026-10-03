@@ -1,0 +1,4 @@
+#2013-09-28 14:26:54
+#GS-911 Android V1.1
+#F650GS
+4868: Oxygen (Lambda) Sensor Circuit Malfunction, No signal or signal intermittent The fault is not present now.

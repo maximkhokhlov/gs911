@@ -1,0 +1,15 @@
+#2012-06-08 10:41:10
+#GS-911 Android V1.1
+#F800GS
+Controller name: BMS-KP2
+Part no: 07722567
+HW Idx: 10
+Coding Idx: 2
+Manufacturer: Bosch
+Manuf. date: 2008-05-06
+MCV: 0.6.0
+FSV: 0.77.35
+OSV: 2.3.1
+Prog status: 350I
+Date release: GE10
+VIN: WB10219028ZT68154

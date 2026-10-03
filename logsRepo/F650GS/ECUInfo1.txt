@@ -1,0 +1,11 @@
+#2013-09-28 14:26:43
+#GS-911 Android V1.1
+#F650GS
+Controller name: BMS-C
+Part: 07668133
+HW Version: c2
+Diag Idx: 4
+Manufacturing Date: 2000-08-23
+Program release: 8000
+Date release: 80003608
+Manufacturer: Hella KG

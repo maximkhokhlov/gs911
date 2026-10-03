@@ -1,0 +1,12 @@
+#2015-03-17 14:49:43
+#GS-911 Android V1.1
+#F800GS
+Controller name: ZFE-Basic
+Part no: 07718033
+HW Idx: c7
+Coding Idx: 9
+Manufacturer: Loewe
+Manuf. date: 2004-03-01
+MCV: 0.6.0
+FSV: 2.1.1
+OSV: 3.3.0

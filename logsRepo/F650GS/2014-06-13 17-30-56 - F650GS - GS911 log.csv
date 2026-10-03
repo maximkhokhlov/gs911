@@ -1,0 +1,9 @@
+##;##
+#6/13/2014 5:30:56 PM
+#GS-911 Beta V1404.6
+#F650GS
+#BMS-C
+time(ms);Speed;RPM;Throttle position (TPS);Engine temperature;Intake air temperature;Ambient air pressure;Battery voltage;Idle actuator position;Injection time;Ignition angle;Lambda sensor voltage;Fuel pump;Fan motor;Lambda closed-loop control;Lambda sensor heating;Tank venting valve (US only)
+0;0;0;0;89.25;32.25;980.00;13.07;140.00;0;111.00;29.30;0;0;0;0;0
+3023;0;0;0;87.00;32.25;980.00;13.07;140.00;0;111.00;48.83;0;0;0;0;0
+3983;0;0;0;86.25;32.25;980.00;12.97;140.00;0;111.00;48.83;0;0;0;0;0

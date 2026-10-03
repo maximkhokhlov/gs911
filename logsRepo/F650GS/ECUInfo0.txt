@@ -1,0 +1,11 @@
+#2013-09-28 14:26:23
+#GS-911 Android V1.1
+#F650GS
+Controller name: ABS-N
+Part: 02335804
+HW Version: 18
+Coding Idx: 0
+Diag Idx: 11
+Manufacturing Date: 2000-06-07
+Software version: 17
+Manufacturer: Nippon

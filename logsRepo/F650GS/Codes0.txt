@@ -1,0 +1,4 @@
+#2014-02-23 09:11:30
+#GS-911 Android V1.1
+#F650GS
+4952: Oxygen (Lambda) Sensor Heating Circuit Malfunction, Signal implausible. The fault is not present now.

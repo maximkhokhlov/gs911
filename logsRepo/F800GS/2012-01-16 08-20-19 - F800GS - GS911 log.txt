@@ -1,0 +1,8 @@
+##;##
+#2012-01-16 08:20:19
+#GS-911 Mobile WM5 V1009.2
+#F800GS
+#BMS-KP2
+Time (ms);Injection time( ms);Lambda control factor;Speed( km/h);RPM;Intake air temperature( °C);Engine temperature( °C);Ignition angle( °KW);Throttle valve position (TPS)( %);Engine load( %);Battery voltage( V);Knock sensor 1( V);Knock sensor 2( V);Ignition dwell time( ms);Odometer( km);Front wheel speed( km/h);Rear wheel speed( km/h);Idle actuator position( steps);Fuel pressure( mbar);Ambient air pressure( mbar);Lambda sensor voltage( mV);Gear position;Sidestand switch 1;Sidestand switch 2;Sidestand switch calculated;Clutch switch;Kill switch;Oil pressure switch;Start switch;Tank venting valve (US only);Secondary air valve;Engine over-temperature light;Actuation of starter relay;Lambda sensor heating;Fuel pump;Fan motor;Engine safety cut-out (of BMSK);Starter function (of BMSK);Starter safety cut-out (of BMSK);Engine warning light (MIL)
+1353;0;1.00;0;0;10.50;9.75;-96.00;0;57.84;12.12;52.81;52.81;3.48;72106.00;0;0;204.00;4391.00;977.79;449.21;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0
+2680;0;1.00;0;0;10.50;9.75;-96.00;0;57.84;12.12;52.81;52.81;3.48

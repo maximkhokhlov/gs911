@@ -1,0 +1,12 @@
+##;##
+#2015-05-03 17:53:26
+#GS-911 Android V1.1
+#F800GS
+#BMS-KP2
+Time (ms);Injection time( ms);Lambda control factor;Speed( km/h);RPM;Intake air temperature( °C);Engine temperature( °C);Ignition angle( °KW);Throttle valve position (TPS)( %);Engine load( %);Battery voltage( V);Knock sensor 1( V);Knock sensor 2( V);Ignition dwell time( ms);Odometer( km);Front wheel speed( km/h);Rear wheel speed( km/h);Idle actuator position( steps);Fuel pressure( mbar);Ambient air pressure( mbar);Lambda sensor voltage( mV);Gear position;Sidestand switch 1;Sidestand switch 2;Sidestand switch calculated;Clutch switch;Kill switch;Oil pressure switch;Start switch;Tank venting valve (US only);Secondary air valve;Engine over-temperature light;Actuation of starter relay;Lambda sensor heating;Fuel pump;Fan motor;Engine safety cut-out (of BMSK);Starter function (of BMSK);Starter safety cut-out (of BMSK);Engine warning light (MIL)
+405;2.17;1.00;0;1393.0;22.5;27.0;5.25;0;15.27;14.48;54.89;39.56;2.31;131174.0;0;0;108.0;4516.0;1008.52;488.27;0;0;1.0;0;0;0;1.0;0;0;1.0;0;0;1.0;1.0;0;0;1.0;0;0
+904;2.17;1.00;0;1392.0;22.5;27.0;5.25;0;15.27;14.20;37.90;27.32;2.58;131174.0;0;0;108.0;4506.0;1008.56;488.27;0;0;1.0;0;0;0;1.0;0;0;1.0;0;0;1.0;1.0;0;0;1.0;0;0
+1403;2.16;1.00;0;1407.0;22.5;27.0;4.5;0;14.89;14.48;29.93;35.79;2.31;131174.0;0;0;108.0;4510.0;1008.56;488.27;0;0;1.0;0;0;0;1.0;0;0;1.0;0;0;1.0;1.0;0;0;1.0;0;0
+1903;2.34;1.00;0;1403.0;22.5;27.75;5.25;0;15.26;14.48;21.77;29.66;2.31;131174.0;0;0;110.0;4516.0;1008.56;488.27;0;0;1.0;0;0;0;1.0;0;0;1.0;0;0;1.0;1.0;0;0;1.0;0;0
+2404;2.38;1.00;0;1378.0;22.5;27.75;6.0;0;15.47;14.39;15.81;23.37;2.31;131174.0;0;0;109.0;4515.0;1008.56;488.27;0;0;1.0;0;0;0;1.0;0;0;1.0;0;0;1.0;1.0;0;0;1.0;0;0
+2903;2.28;1.00;0;1432.0;22.5;27.75;4.5;0;14.76;14.29;19.02;23.88;2.58;131174.0;0;0;106.0;4519.0;1008.56;488.27;0;0;1.0;0;0;0;1.0;0;0;1.0;0;0;1.0;1.0;0;0;1.0;0;0
